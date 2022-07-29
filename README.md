@@ -1,6 +1,6 @@
 # To-Do List
 <p>A To-Do List application making use of local storage to store persitent user data.</p>
-<p>From the Odin Project fundamentals <a href=https://www.theodinproject.com/lessons/node-path-javascript-todo-list</a></p>
+<p>From the Odin Project fundamentals <a href=https://www.theodinproject.com/lessons/node-path-javascript-todo-list></a></p>
 <p>Created By : <a href="https://github.com/LucianiChristian">Christian Luciani</a></p> 
 <a href="#">Live Preview</a>
 
