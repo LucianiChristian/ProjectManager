@@ -1,3 +1,8 @@
-p {
-    color: red;
+@font-face {
+    font-family: 'Poppins';
+    src: url(./Poppins-Regular.ttf);
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
 }
