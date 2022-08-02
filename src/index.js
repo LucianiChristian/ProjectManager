@@ -1,13 +1,4 @@
 import './style.css';
-import {UI} from './ui.js';
+import {UI} from './components/ui.js';
 
 UI.refreshDashboard();
-
-
-
-
-
-
-
-
-
