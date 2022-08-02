@@ -3,12 +3,12 @@ import {controller, model, view} from './mvc/mvc.js';
 export {UI};
 
 const sideBar = {
-  clearSidebarProjects() {
+  clearProjects() {
     const sidebarProjects = document.getElementById('sidebarProjects');
     
     sidebarProjects.innerHTML = '';
   },
-  addSidebarProjects() {
+  addProjects() {
     const projectElements = controller.renderProjects();
     
     const sidebarProjects = document.getElementById('sidebarProjects');
@@ -16,18 +16,18 @@ const sideBar = {
       sidebarProjects.appendChild(element);
     });
   },
-  refreshSidebarProjects() {
-    this.clearSidebarProjects();
-    this.addSidebarProjects();
+  refreshProjects() {
+    this.clearProjects();
+    this.addProjects();
     dynamicEventListeners.sidebarProjects();
   },
   addProject(name) {
     controller.addProject(name);
-    this.refreshSidebarProjects();
+    this.refreshProjects();
   },
   removeProject(index) {
     controller.removeProject(index);
-    this.refreshSidebarProjects();
+    this.refreshProjects();
   },
   switchCurrentProject(index) {
     controller.setCurrentProjectIndex(index);
@@ -36,19 +36,19 @@ const sideBar = {
 }
 
 const currentProject = {
-  refreshCurrentProjectTitle() {
+  refreshTitle() {
     const titleText = controller.renderCurrentProjectTitle();
     
     const currentProjectHeading = document.getElementById('currentProjectTitle');
     
     currentProjectHeading.textContent = titleText;
   },
-  clearCurrentProjectTasks() {
+  clearTasks() {
     const currentProjectTasks = document.getElementById('currentProjectTasks');
     
     currentProjectTasks.innerHTML = '';
   },
-  addCurrentProjectTasks() {
+  addTasks() {
     const taskElements = controller.renderCurrentProjectTasks();
     
     const projectTasks = document.getElementById('currentProjectTasks');
@@ -57,19 +57,19 @@ const currentProject = {
       projectTasks.appendChild(element);
     });
   },
-  refreshCurrentProjectTasks() {
-    this.clearCurrentProjectTasks();
-    this.addCurrentProjectTasks();
+  refreshTasks() {
+    this.clearTasks();
+    this.addTasks();
   },
-  refreshCurrentProject() {
-    this.refreshCurrentProjectTitle();
-    this.refreshCurrentProjectTasks();
+  refresh() {
+    this.refreshTitle();
+    this.refreshTasks();
   },
 }
 
 function refreshDashboard() {
-      sideBar.refreshSidebarProjects();
-      currentProject.refreshCurrentProject();
+      sideBar.refreshProjects();
+      currentProject.refresh();
 }
 
 const UI = {sideBar, currentProject, refreshDashboard};
