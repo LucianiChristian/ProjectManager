@@ -31,7 +31,7 @@ const sideBar = {
   },
   switchCurrentProject(index) {
     controller.setCurrentProjectIndex(index);
-    refreshDashboard();
+    page.refreshDashboard();
   }
 }
 
@@ -67,12 +67,49 @@ const currentProject = {
   },
 }
 
-function refreshDashboard() {
-      sideBar.refreshProjects();
-      currentProject.refresh();
+const page = {
+  refreshDashboard() {
+    sideBar.refreshProjects();
+    currentProject.refresh();
+}
 }
 
-const UI = {sideBar, currentProject, refreshDashboard};
+const UI = {sideBar, currentProject, page, staticEventListeners};
+
+// ---------------Dynamic Event Listeners---------- //
+const dynamicEventListeners = {
+    sidebarProjects : () => {
+        const sidebarProjects = document.querySelectorAll('#sidebarProjects > p');
+    sidebarProjects.forEach((p) => {
+      p.addEventListener('click', () => {
+        sideBar.switchCurrentProject(p.dataset.index);
+      })
+    });
+    }
+}
+
+function staticEventListeners() {
+  // Add New Task Button
+  const addNewTask = document.getElementById('header-addNewTask');
+  addNewTask.addEventListener('click', () => {
+    modalContainer.classList.add('show');
+  });
+
+  // Add New Task Modal
+  const modalContainer = document.getElementById('addTaskModalContainer');
+  modalContainer.addEventListener('click', (e) => {
+    if(e.target.classList.contains("addTaskModalContainer")) {
+      modalContainer.classList.remove('show');
+    }
+  });
+
+  // Add New Project Button
+  const addNewProject = document.getElementById('sidebarNewProject');
+  addNewProject.addEventListener('click', () => {
+    // pull up modal
+    // ............
+  });
+}
 
 // ~~~~~~~~~~~~~~~T E S T I N G   B E L O W~~~~~~~~~~~~~~ //
 // will eventually be transferred to index.js once UI has the corresponding addProject and addProjectTask functions
@@ -93,28 +130,3 @@ controller.addProject('My Project 3');
 
 controller.addCurrentProjectTask('hi','hi',['clean room', 'do stuff'],'to-do');
 controller.addCurrentProjectTask('hi','hi',['pet da cat'],'to-do');
-
-// ---------------Dynamic Event Listeners---------- //
-const dynamicEventListeners = {
-    sidebarProjects : () => {
-        const sidebarProjects = document.querySelectorAll('#sidebarProjects > p');
-    sidebarProjects.forEach((p) => {
-      p.addEventListener('click', () => {
-        sideBar.switchCurrentProject(p.dataset.index);
-      })
-    });
-    }
-}
-
-// ---------------Static Event Listeners---------- //
-// Modal
-const addNewTask = document.getElementById('header-addNewTask');
-const modalContainer = document.getElementById('modalContainer');
-addNewTask.addEventListener('click', () => {
-  modalContainer.classList.add('show');
-});
-modalContainer.addEventListener('click', (e) => {
-  if(e.target.classList.contains("modalContainer")) {
-    modalContainer.classList.remove('show');
-  }
-});

@@ -47,12 +47,12 @@ textarea {
   background-color: var(--bg-color-light);
 }
 
-.sidebar__projects > p {
+.sidebar p {
   cursor: pointer;
   border-radius: 3px;
 }
 
-.sidebar__projects > p:hover {
+.sidebar p:hover {
   transform: scale(1.1);
   background-color: grey;
 }
