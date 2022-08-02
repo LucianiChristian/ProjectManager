@@ -293,7 +293,7 @@ addNewTask.addEventListener('click', () => {
   modalContainer.classList.add('show');
 });
 modalContainer.addEventListener('click', (e) => {
-  if(e.target.classList.contains("modal-container")) {
+  if(e.target.classList.contains("modalContainer")) {
     modalContainer.classList.remove('show');
   }
 });

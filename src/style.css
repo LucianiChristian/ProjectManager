@@ -10,6 +10,8 @@
     
     --accent-color-grey: rgba(200, 200, 200, 0.6);
     --accent-color-darkGrey: rgba(200, 200, 200, 0.9);
+
+    --font-color-primary : white;
     
     --padding-main: 20px;
     
@@ -30,7 +32,7 @@ body {
   
   display: flex;
   
-  color: white;
+  color: var(--font-color-primary);
 }
 
 textarea {
@@ -45,12 +47,12 @@ textarea {
   background-color: var(--bg-color-light);
 }
 
-.sidebar-projects > p {
+.sidebar__projects > p {
   cursor: pointer;
   border-radius: 3px;
 }
 
-.sidebar-projects > p:hover {
+.sidebar__projects > p:hover {
   transform: scale(1.1);
   background-color: grey;
 }
@@ -62,13 +64,13 @@ textarea {
   background-color: var(--bg-color-dark);
 }
 
-.currentProject--header {
+.currentProject__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.currentProject--header button {
+.currentProject__header button {
   border-radius: var(--border-radius-hi);
   padding: 10px 20px;
   background-color: var(--bg-color-light);
@@ -76,7 +78,7 @@ textarea {
   border: none;
 }
 
-.currentProject--tasks > * {
+.currentProject__tasks > * {
   background-color: var(--bg-color-light);
   
   border-radius: var(--border-radius-lo);
@@ -90,9 +92,7 @@ textarea {
   padding: 20px;
 }
 
-/* For modal display */
-
-.modal-container {
+.modalContainer {
   position: absolute;
   height: 100vh;
   width : 100vw;
@@ -107,13 +107,12 @@ textarea {
   opacity: 0;
 }
 
-.modal-container.show {
+.modalContainer.show {
   pointer-events: auto;
   opacity: 1;
 }
 
-/* ---------------- */
-.modal-addTask {
+.addTask {
   width: 400px;
   padding: var(--padding-main);
   border-radius: var(--border-radius-lo);
@@ -125,7 +124,7 @@ textarea {
   gap: 10px;
 }
 
-.modal-addTask input,textarea,select,option {
+.addTask input,textarea,select,option {
   background: none;
   border: 1px solid rgba(200, 200, 200, 0.2);
   border-radius: var(--border-radius-lo);
@@ -134,15 +133,15 @@ textarea {
   color: white;
 }
 
-.modal-addTask .subtask {
+.addTask__subtask {
   display: flex;
 }
 
-.modal-addTask .subtask input {
+.addTask__subtask input {
   flex: 1;
 }
 
-.modal-addTask button.removeSubtask {
+.subtask__remove {
   background: none;
   border: none;
   
@@ -153,7 +152,7 @@ textarea {
   color: var(--accent-color-grey);
 }
 
-.modal-addTask button.addNewSubtask {
+.addTask__addNewSubtask {
   border: none;
   
   border-radius: var(--border-radius-hi);
@@ -164,7 +163,7 @@ textarea {
   font-weight: bold;
 }
 
-.modal-addTask button.createTask {
+.addTask__createTask {
     background: none;
     border: none;
 
