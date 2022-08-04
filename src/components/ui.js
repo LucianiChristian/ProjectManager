@@ -120,14 +120,20 @@ function staticEventListeners() {
   // Add New Project Submission
   const createProject = document.getElementById('createProject');
   createProject.addEventListener('submit', (e) => {
+    // stops the form from submitting
     e.preventDefault();
+    // accesses the form data for use
     const projectName = createProject.elements['projectName'].value;
-
+    // uses the form data to add a project
     sideBar.addProject(projectName);
-
-    createProject.elements['projectName'].value = '';
-
+    // clears the current form data
+    createProject.reset();
+    // closes out the modal
     addProjectModalContainer.classList.remove('modalContainer--show');
+    // gets a list of the projects in order to switch the current project
+    const sidebarProjects = document.querySelectorAll('#sidebarProjects > p');
+    // switches the current project to the one we've just created
+    sideBar.switchCurrentProject(sidebarProjects.length - 1);
   })
 }
 
