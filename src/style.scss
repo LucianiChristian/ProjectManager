@@ -52,6 +52,10 @@ textarea {
     border-radius: 3px;
   }
 
+  &__createNew {
+    color: var(--bg-color-purple);
+  }
+
   p:hover {
     transform: scale(1.1);
     background-color: grey;
@@ -70,7 +74,7 @@ textarea {
     align-items: center;
   }
 
-  &__header button {
+  &__header-button {
     border-radius: var(--border-radius-hi);
     padding: 10px 20px;
     background-color: var(--bg-color-light);
@@ -113,7 +117,7 @@ textarea {
   }
 }
 
-.addTask {
+.addTaskModal {
   width: 400px;
   padding: var(--padding-main);
   border-radius: var(--border-radius-lo);
@@ -138,7 +142,7 @@ textarea {
   &__subtask input {
     flex: 1;
   }
-  &__remove {
+  &__subtask-remove {
     background: none;
     border: none;
     
