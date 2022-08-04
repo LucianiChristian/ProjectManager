@@ -1,0 +1,180 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url(./Poppins-Regular.ttf);
+}
+
+// ----------------- Global ----------------- //
+:root {
+    --bg-color-light: rgb(44, 44, 56);
+    --bg-color-dark: rgb(36, 36, 46);
+    --bg-color-purple: rgb(116, 82, 227);
+    
+    --accent-color-grey: rgba(200, 200, 200, 0.6);
+    --accent-color-darkGrey: rgba(200, 200, 200, 0.9);
+
+    --font-color-primary : white;
+    
+    --padding-main: 20px;
+    
+    --border-radius-hi: 20px;
+    --border-radius-lo: 8px;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  height: 100vh;
+  
+  display: flex;
+  
+  color: var(--font-color-primary);
+}
+
+textarea {
+  resize: none;
+}
+
+// ----------------- Components ------------- //
+
+.sidebar {
+  padding: var(--padding-main);
+  flex: 1;
+  background-color: var(--bg-color-light);
+
+  p {
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  p:hover {
+    transform: scale(1.1);
+    background-color: grey;
+  }
+}
+
+.currentProject {
+  padding: var(--padding-main);
+  flex: 3;
+  
+  background-color: var(--bg-color-dark);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__header button {
+    border-radius: var(--border-radius-hi);
+    padding: 10px 20px;
+    background-color: var(--bg-color-light);
+    color: white;
+    border: none;
+  }
+
+  &__tasks > * {
+    background-color: var(--bg-color-light);
+    
+    border-radius: var(--border-radius-lo);
+    
+    width: 50%;
+    
+    margin: 20px auto;
+    
+    text-align: center;
+    
+    padding: 20px;
+  }
+}
+
+.modalContainer {
+  position: absolute;
+  height: 100vh;
+  width : 100vw;
+  
+  background-color: rgba(0, 0, 0, 0.5);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  pointer-events: none;
+  opacity: 0;
+
+  &--show {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+
+.addTask {
+  width: 400px;
+  padding: var(--padding-main);
+  border-radius: var(--border-radius-lo);
+  
+  background-color: var(--bg-color-light);
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  input,textarea,select,option {
+    background: none;
+    border: 1px solid rgba(200, 200, 200, 0.2);
+    border-radius: var(--border-radius-lo);
+    padding: 5px;
+    
+    color: white;
+  }
+  &__subtask {
+    display: flex;
+  }
+  &__subtask input {
+    flex: 1;
+  }
+  &__remove {
+    background: none;
+    border: none;
+    
+    padding: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    
+    color: var(--accent-color-grey);
+  }
+  &__addNewSubtask {
+    border: none;
+    
+    border-radius: var(--border-radius-hi);
+    padding: 10px;
+    
+    background-color: white;
+    color: grey;
+    font-weight: bold;
+  }
+  &__createTask {
+      background: none;
+      border: none;
+  
+      border-radius: var(--border-radius-hi);
+      padding: 10px;
+  
+      background-color: var(--bg-color-purple);
+      color: white;
+      font-weight: bold;
+  }
+}
+ 
+
+
+
+
+
+
+

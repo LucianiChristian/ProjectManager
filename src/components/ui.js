@@ -92,28 +92,28 @@ function staticEventListeners() {
   // Add New Task Button
   const addNewTask = document.getElementById('header-addNewTask');
   addNewTask.addEventListener('click', () => {
-    addTaskModalContainer.classList.add('show');
+    addTaskModalContainer.classList.add('modalContainer--show');
   });
 
   // Add New Task Modal
   const addTaskModalContainer = document.getElementById('addTaskModalContainer');
   addTaskModalContainer.addEventListener('click', (e) => {
     if(e.target.classList.contains("addTaskModalContainer")) {
-      addTaskModalContainer.classList.remove('show');
+      addTaskModalContainer.classList.remove('modalContainer--show');
     }
   });
 
   // Add New Project Button
   const addNewProject = document.getElementById('sidebarNewProject');
   addNewProject.addEventListener('click', () => {
-    addProjectModalContainer.classList.add('show');
+    addProjectModalContainer.classList.add('modalContainer--show');
   })
 
   // Add New Project Modal
   const addProjectModalContainer = document.getElementById('addProjectModalContainer');
   addProjectModalContainer.addEventListener('click', (e) => {
     if(e.target.classList.contains("addProjectModalContainer")) {
-      addProjectModalContainer.classList.remove('show');
+      addProjectModalContainer.classList.remove('modalContainer--show');
     }
   });
 }
