@@ -124,6 +124,10 @@ function staticEventListeners() {
     const projectName = createProject.elements['projectName'].value;
 
     sideBar.addProject(projectName);
+
+    createProject.elements['projectName'].value = '';
+
+    addProjectModalContainer.classList.remove('modalContainer--show');
   })
 }
 
