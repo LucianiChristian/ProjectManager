@@ -117,7 +117,7 @@ textarea {
   }
 }
 
-.addTaskModal {
+.addTaskModal, .addProjectModal{
   width: 400px;
   padding: var(--padding-main);
   border-radius: var(--border-radius-lo);
