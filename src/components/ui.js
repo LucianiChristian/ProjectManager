@@ -116,6 +116,15 @@ function staticEventListeners() {
       addProjectModalContainer.classList.remove('modalContainer--show');
     }
   });
+
+  // Add New Project Submission
+  const createProject = document.getElementById('createProject');
+  createProject.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const projectName = createProject.elements['projectName'].value;
+
+    sideBar.addProject(projectName);
+  })
 }
 
 // ~~~~~~~~~~~~~~~T E S T I N G   B E L O W~~~~~~~~~~~~~~ //
