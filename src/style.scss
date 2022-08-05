@@ -74,12 +74,23 @@ textarea {
     align-items: center;
   }
 
-  &__header-button {
+  &__header-addTask {
     border-radius: var(--border-radius-hi);
     padding: 10px 20px;
     background-color: var(--bg-color-light);
-    color: white;
+    color: var(--font-color-primary);
     border: none;
+
+    cursor: pointer;
+  }
+
+  &__header-projectSettings {
+    background: none;
+    border: none;
+    color: var(--font-color-primary);
+    font-weight: bold;
+
+    cursor: pointer;
   }
 
   &__tasks > * {

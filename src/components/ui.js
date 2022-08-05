@@ -135,6 +135,9 @@ function staticEventListeners() {
     // switches the current project to the one we've just created
     sideBar.switchCurrentProject(sidebarProjects.length - 1);
   })
+
+  // Remove Project
+  
 }
 
 // ~~~~~~~~~~~~~~~T E S T I N G   B E L O W~~~~~~~~~~~~~~ //
