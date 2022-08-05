@@ -33,7 +33,13 @@ const sideBar = {
 
 const currentProject = {
   refreshTitle() {
-    const titleText = controller.renderCurrentProjectTitle();
+    let titleText;
+    if(controller.currentProjectIndex < 0) {
+      titleText = '';
+    } 
+    else {
+      titleText = controller.renderCurrentProjectTitle();
+    }
     
     const currentProjectHeading = document.getElementById('currentProjectTitle');
     
@@ -45,6 +51,9 @@ const currentProject = {
     currentProjectTasks.innerHTML = '';
   },
   addTasks() {
+    if(controller.currentProjectIndex < 0) {
+      return;
+    }
     const taskElements = controller.renderCurrentProjectTasks();
     
     const projectTasks = document.getElementById('currentProjectTasks');
@@ -64,15 +73,13 @@ const currentProject = {
 }
 
 const page = {
-  // removeProject(index) {
-  //   controller.removeProject(index);
-  //   this.refreshDashboard();
-  // },
   removeCurrentProject() {
     const currentProjectIndex = controller.currentProjectIndex;
 
-    controller.removeProject(currentProjectIndex);
-    this.refreshDashboard();
+    if(currentProjectIndex >= 0) {
+      controller.removeProject(currentProjectIndex);
+      this.refreshDashboard();
+    }
   },
   refreshDashboard() {
     sideBar.refreshProjects();
