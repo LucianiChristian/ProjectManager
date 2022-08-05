@@ -110,6 +110,12 @@ textarea {
     border-radius: var(--border-radius-lo);
 
     font-size: 0.8rem;
+
+    cursor: pointer;
+  }
+
+  &__header-dropdownContent:hover {
+    background-color: var(--accent-color-darkGrey);
   }
 
   &__header-projectSettings {
@@ -119,6 +125,14 @@ textarea {
     font-weight: bold;
 
     cursor: pointer;
+
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+  }
+
+  &__header-projectSettings:hover {
+    background-color: var(--accent-color-grey);
   }
 
   &__tasks > * {

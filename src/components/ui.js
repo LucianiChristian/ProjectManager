@@ -34,6 +34,7 @@ const sideBar = {
 const currentProject = {
   refreshTitle() {
     let titleText;
+    
     if(controller.currentProjectIndex < 0) {
       titleText = '';
     } 
