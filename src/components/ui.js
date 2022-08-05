@@ -25,10 +25,6 @@ const sideBar = {
     controller.addProject(name);
     this.refreshProjects();
   },
-  removeProject(index) {
-    controller.removeProject(index);
-    this.refreshProjects();
-  },
   switchCurrentProject(index) {
     controller.setCurrentProjectIndex(index);
     page.refreshDashboard();
@@ -68,10 +64,20 @@ const currentProject = {
 }
 
 const page = {
+  // removeProject(index) {
+  //   controller.removeProject(index);
+  //   this.refreshDashboard();
+  // },
+  removeCurrentProject() {
+    const currentProjectIndex = controller.currentProjectIndex;
+
+    controller.removeProject(currentProjectIndex);
+    this.refreshDashboard();
+  },
   refreshDashboard() {
     sideBar.refreshProjects();
     currentProject.refresh();
-}
+  }
 }
 
 const UI = {sideBar, currentProject, page, staticEventListeners};
@@ -136,7 +142,20 @@ function staticEventListeners() {
     sideBar.switchCurrentProject(sidebarProjects.length - 1);
   })
 
+  // Project Settings Button
+  const projectSettings = document.getElementById('header-projectSettings');
+  const projectSettingsDropdown = document.getElementById('header-projectSettingsDropdown');
+  projectSettings.addEventListener('click', () => {
+    const display = projectSettingsDropdown.style.display;
+
+    display === 'none' ? projectSettingsDropdown.style.display = 'block' : projectSettingsDropdown.style.display = 'none';
+  });
+
   // Remove Project
+  const removeProject = document.getElementById('header-projectSettingsDelete');
+  removeProject.addEventListener('click', () => {
+    page.removeCurrentProject();
+  });
   
 }
 
