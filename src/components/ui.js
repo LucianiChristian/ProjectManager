@@ -125,8 +125,10 @@ function staticEventListeners() {
     // accesses the form data for use
     const title = createTask.elements['title'].value;
     const description = createTask.elements['description'].value;
-    const subtasks = createTask.elements['subtasks'].value;
-    // failing
+    
+    const subtaskElements = Array.from(document.querySelectorAll('input[name="subtasks"]'));
+    const subtasks = subtaskElements.map(subtask => subtask.value);
+
     console.log(subtasks);
   })
 
