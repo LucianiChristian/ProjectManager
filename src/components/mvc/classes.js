@@ -17,12 +17,6 @@ class Project {
 }
 
 class Task {
-    static status = {
-      toDo: 'To-Do',
-      doing: 'Doing',
-      done: 'Done'
-    }
- 
     constructor(title, description, subtasks, status) {
         this.title = title;
         this.description = description;
@@ -39,11 +33,19 @@ class Task {
     removeSubtask(index) {
       this.subtasks.splice(index, 1);
     }
-  
-    changeStatus(status) {
-      this.status = status;
+
+    changeStatusToDo() {
+      this.status = 'To-Do';
     }
-  
+
+    changeStatusDoing() {
+      this.status = 'Doing';
+    }
+
+    changeStatusDone() {
+      this.status = 'Done';
+    }
+
     getCompletedSubtaskCount() {
       let count = 0;
       

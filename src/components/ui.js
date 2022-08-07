@@ -129,7 +129,8 @@ function staticEventListeners() {
     const subtaskElements = Array.from(document.querySelectorAll('input[name="subtasks"]'));
     const subtasks = subtaskElements.map(subtask => subtask.value);
 
-    console.log(subtasks);
+    const status = createTask.elements['status'].value;
+    console.log(status);
   })
 
   // Add New Project Button
