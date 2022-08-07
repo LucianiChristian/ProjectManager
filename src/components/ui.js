@@ -3,73 +3,83 @@ import {controller, model, view} from './mvc/mvc.js';
 export {UI};
 
 const sideBar = {
-  clearProjects() {
-    const sidebarProjects = document.getElementById('sidebarProjects');
-    
-    sidebarProjects.innerHTML = '';
+  projectTitles: {
+    clear() {
+      const sidebarProjects = document.getElementById('sidebarProjects');
+      
+      sidebarProjects.innerHTML = '';
+    },
+    add() {
+      const projectElements = controller.renderProjects();
+      
+      const sidebarProjects = document.getElementById('sidebarProjects');
+      projectElements.forEach(element => {
+        sidebarProjects.appendChild(element);
+      });
+    },
+    eventListeners() {
+      const sidebarProjects = document.querySelectorAll('#sidebarProjects > p');
+
+      sidebarProjects.forEach((p) => {
+          p.addEventListener('click', () => {
+          page.switchCurrentProject(p.dataset.index);
+        })});
+    },
+    refresh() {
+      this.clear();
+      this.add();
+      this.eventListeners();
+    },
   },
-  addProjects() {
-    const projectElements = controller.renderProjects();
-    
-    const sidebarProjects = document.getElementById('sidebarProjects');
-    projectElements.forEach(element => {
-      sidebarProjects.appendChild(element);
-    });
-  },
-  refreshProjects() {
-    this.clearProjects();
-    this.addProjects();
-    dynamicEventListeners.sidebarProjects();
-  },
-  addProject(name) {
+  createNewProject(name) {
     controller.addProject(name);
-    this.refreshProjects();
+    this.projectTitles.refresh();
   },
-  switchCurrentProject(index) {
-    controller.setCurrentProjectIndex(index);
-    page.refreshDashboard();
-  }
 }
 
 const currentProject = {
-  refreshTitle() {
-    let titleText;
-    
-    if(controller.currentProjectIndex < 0) {
-      titleText = '';
-    } 
-    else {
-      titleText = controller.renderCurrentProjectTitle();
-    }
-    
-    const currentProjectHeading = document.getElementById('currentProjectTitle');
-    
-    currentProjectHeading.textContent = titleText;
+  tasks: {
+    clear() {
+      const currentProjectTasks = document.getElementById('currentProjectTasks');
+      
+      currentProjectTasks.innerHTML = '';
+    },
+    add() {
+      if(controller.currentProjectIndex < 0) {
+        return;
+      }
+      const taskElements = controller.renderCurrentProjectTasks();
+      
+      const projectTasks = document.getElementById('currentProjectTasks');
+     
+      taskElements.forEach((element) => {
+        projectTasks.appendChild(element);
+      });
+    },
+    refresh() {
+      this.clear();
+      this.add();
+    },
   },
-  clearTasks() {
-    const currentProjectTasks = document.getElementById('currentProjectTasks');
-    
-    currentProjectTasks.innerHTML = '';
-  },
-  addTasks() {
-    if(controller.currentProjectIndex < 0) {
-      return;
-    }
-    const taskElements = controller.renderCurrentProjectTasks();
-    
-    const projectTasks = document.getElementById('currentProjectTasks');
-   
-    taskElements.forEach((element) => {
-      projectTasks.appendChild(element);
-    });
-  },
-  refreshTasks() {
-    this.clearTasks();
-    this.addTasks();
+  title: {
+    refresh() {
+      let titleText;
+  
+      if(controller.currentProjectIndex < 0) {
+        titleText = '';
+      } 
+      else {
+        titleText = controller.renderCurrentProjectTitle();
+      }
+      
+      const currentProjectHeading = document.getElementById('currentProjectTitle');
+      
+      currentProjectHeading.textContent = titleText;
+    },
   },
   refresh() {
-    this.refreshTitle();
-    this.refreshTasks();
+    this.title.refresh();
+    this.tasks.refresh();
   },
 }
 
@@ -83,24 +93,17 @@ const page = {
     }
   },
   refreshDashboard() {
-    sideBar.refreshProjects();
+    sideBar.projectTitles.refresh();
     currentProject.refresh();
+  },
+  switchCurrentProject(index) {
+    controller.setCurrentProjectIndex(index);
+    page.refreshDashboard();
   }
 }
 
 const UI = {sideBar, currentProject, page, staticEventListeners};
 
-// ---------------Dynamic Event Listeners---------- //
-const dynamicEventListeners = {
-    sidebarProjects : () => {
-        const sidebarProjects = document.querySelectorAll('#sidebarProjects > p');
-    sidebarProjects.forEach((p) => {
-      p.addEventListener('click', () => {
-        sideBar.switchCurrentProject(p.dataset.index);
-      })
-    });
-    }
-}
 
 function staticEventListeners() {
   // Add New Task Button
@@ -139,7 +142,7 @@ function staticEventListeners() {
     // accesses the form data for use
     const projectName = createProject.elements['projectName'].value;
     // uses the form data to add a project
-    sideBar.addProject(projectName);
+    sideBar.createNewProject(projectName);
     // clears the current form data
     createProject.reset();
     // closes out the modal
@@ -147,7 +150,7 @@ function staticEventListeners() {
     // gets a list of the projects in order to switch the current project
     const sidebarProjects = document.querySelectorAll('#sidebarProjects > p');
     // switches the current project to the one we've just created
-    sideBar.switchCurrentProject(sidebarProjects.length - 1);
+    page.switchCurrentProject(sidebarProjects.length - 1);
   })
 
   // Project Settings Button
