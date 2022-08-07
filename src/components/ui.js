@@ -81,6 +81,10 @@ const currentProject = {
     this.title.refresh();
     this.tasks.refresh();
   },
+  createNewTask(title, description, subtasks, status) {
+    controller.addCurrentProjectTask(title, description, subtasks, status);
+    this.refresh();
+  }
 }
 
 const page = {
@@ -122,15 +126,25 @@ function staticEventListeners() {
   createTask.addEventListener('submit', (e) => {
     // stops the form from submitting
     e.preventDefault();
+    
     // accesses the form data for use
     const title = createTask.elements['title'].value;
     const description = createTask.elements['description'].value;
     
     const subtaskElements = Array.from(document.querySelectorAll('input[name="subtasks"]'));
     const subtasks = subtaskElements.map(subtask => subtask.value);
+    console.log(subtasks);
 
     const status = createTask.elements['status'].value;
-    console.log(status);
+    
+    // use the form data to add a task
+    currentProject.createNewTask(title, description, subtasks, status);
+
+    // clear current form data
+    createTask.reset();
+
+    // closes out the modal
+    addTaskModalContainer.classList.remove('modalContainer--show');
   })
 
   // Add New Project Button
