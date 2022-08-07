@@ -102,9 +102,6 @@ const page = {
   }
 }
 
-const UI = {sideBar, currentProject, page, staticEventListeners};
-
-
 function staticEventListeners() {
   // Add New Task Button
   const addNewTask = document.getElementById('header-addNewTask');
@@ -119,6 +116,19 @@ function staticEventListeners() {
       addTaskModalContainer.classList.remove('modalContainer--show');
     }
   });
+
+  // Add New Task Submission
+  const createTask = document.getElementById('createTask');
+  createTask.addEventListener('submit', (e) => {
+    // stops the form from submitting
+    e.preventDefault();
+    // accesses the form data for use
+    const title = createTask.elements['title'].value;
+    const description = createTask.elements['description'].value;
+    const subtasks = createTask.elements['subtasks'].value;
+    // failing
+    console.log(subtasks);
+  })
 
   // Add New Project Button
   const addNewProject = document.getElementById('sidebarNewProject');
@@ -169,6 +179,43 @@ function staticEventListeners() {
   });
   
 }
+
+const UI = {sideBar, currentProject, page, staticEventListeners};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ~~~~~~~~~~~~~~~T E S T I N G   B E L O W~~~~~~~~~~~~~~ //
 // will eventually be transferred to index.js once UI has the corresponding addProject and addProjectTask functions
