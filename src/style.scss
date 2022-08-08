@@ -56,6 +56,24 @@ textarea {
   resize: none;
 }
 
+// ----------------- Component Classes ------ //
+.settingsIcon {
+  background: none;
+  border: none;
+  color: var(--font-color-primary);
+  font-weight: bold;
+
+  cursor: pointer;
+
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+}
+
+.settingsIcon:hover {
+  background-color: var(--accent-color-darkGrey);
+}
+
 
 // ----------------- Components ------------- //
 
@@ -129,23 +147,6 @@ textarea {
     cursor: pointer;
   }
 
-  &__header-dropdownContent:hover {
-    background-color: var(--accent-color-darkGrey);
-  }
-
-  &__header-projectSettings {
-    background: none;
-    border: none;
-    color: var(--font-color-primary);
-    font-weight: bold;
-
-    cursor: pointer;
-
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-  }
-
   &__header-projectSettings:hover {
     background-color: var(--accent-color-grey);
   }
@@ -185,7 +186,7 @@ textarea {
   }
 }
 
-.addTaskModal, .addProjectModal{
+.addTaskModal, .addProjectModal, .taskViewModal{
   width: 400px;
   padding: var(--padding-main);
   border-radius: var(--border-radius-lo);
@@ -248,6 +249,14 @@ textarea {
       color: white;
       font-weight: bold;
   }
+}
+
+.taskViewModal {
+  &__topContent {
+    display: flex;
+    justify-content: space-between;
+  }
+
 }
  
 
