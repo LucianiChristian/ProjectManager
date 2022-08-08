@@ -149,7 +149,7 @@ function staticEventListeners() {
     addTaskModalContainer.classList.add('modalContainer--show');
   });
 
-  // Add New Task Modal
+  // Add New Task Modal Closer
   const addTaskModalContainer = document.getElementById('addTaskModalContainer');
   addTaskModalContainer.addEventListener('click', (e) => {
     if(e.target.classList.contains("addTaskModalContainer")) {
@@ -211,7 +211,7 @@ function staticEventListeners() {
     addProjectModalContainer.classList.add('modalContainer--show');
   })
 
-  // Add New Project Modal
+  // Add New Project Modal Closer
   const addProjectModalContainer = document.getElementById('addProjectModalContainer');
   addProjectModalContainer.addEventListener('click', (e) => {
     if(e.target.classList.contains("addProjectModalContainer")) {
@@ -253,6 +253,15 @@ function staticEventListeners() {
     page.removeCurrentProject();
   });
   
+  // Task View Modal Closer
+  const taskViewModalContainer = document.getElementById('taskViewModalContainer');
+  taskViewModalContainer.addEventListener('click', (e) => {
+    if(e.target.classList.contains("taskViewModalContainer")) {
+      taskViewModalContainer.classList.remove('modalContainer--show');
+
+      document.getElementById('taskView').innerHTML = '';
+    }
+  });
 }
 
 const UI = {sideBar, currentProject, page, staticEventListeners};
