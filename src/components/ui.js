@@ -48,17 +48,39 @@ const currentProject = {
       if(controller.currentProjectIndex < 0) {
         return;
       }
-      const taskElements = controller.renderCurrentProjectTasks();
+      const taskElements = controller.renderCurrentProjectTaskCards();
       
       const projectTasks = document.getElementById('currentProjectTasks');
-     
+      
       taskElements.forEach((element) => {
         projectTasks.appendChild(element);
       });
     },
+    eventListeners() {
+      const tasks = document.querySelectorAll('#currentProjectTasks > div');
+      
+      const modalContainer = document.getElementById('taskViewModalContainer');
+      const modal = document.getElementById('taskView');
+
+      tasks.forEach(task => {
+        task.addEventListener('click', () => {
+          modalContainer.classList.add('modalContainer--show');
+
+          const taskIndex = task.dataset.index;
+          
+          const modalElements = controller.renderCurrentProjectTaskModal(taskIndex);
+
+          modal.appendChild(modalElements.topContent);
+          modal.appendChild(modalElements.taskDescription);
+          modal.appendChild(modalElements.subtasksContainer);
+          modal.appendChild(modalElements.dropdownStatus);
+        });
+      })
+    },
     refresh() {
       this.clear();
       this.add();
+      this.eventListeners();
     },
   },
   title: {

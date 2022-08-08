@@ -38,12 +38,19 @@ const controller = {
   
       return titleText;
     },
-    renderCurrentProjectTasks() {
+    renderCurrentProjectTaskCards() {
       const projectData = model.getProject(this.currentProjectIndex);
   
-      const taskElements = view.renderCurrentProjectTasks(projectData);
+      const taskElements = view.renderCurrentProjectTaskCards(projectData);
       
       return taskElements;
+    },
+    renderCurrentProjectTaskModal(taskIndex) {
+      const projectData = model.getProject(this.currentProjectIndex);
+
+      const modal = view.renderCurrentProjectTaskModal(projectData, taskIndex);
+
+      return modal;
     }
 }
   
@@ -88,10 +95,10 @@ const view = {
         
         return h2;
     },
-    renderCurrentProjectTasks(currentProjectData) {
-        const tasks = currentProjectData.tasks;
+    renderCurrentProjectTaskCards(currentProjectData) {
+      const tasks = currentProjectData.tasks;
 
-        const taskElements = tasks.map(task => {
+      const taskElements = tasks.map((task, index) => {
         const h3 = document.createElement('h3'); 
         h3.textContent = task.title;
         
@@ -103,13 +110,76 @@ const view = {
         p.textContent = `${subtaskCompletedCount} of ${subtaskTotalCount} subtasks`;
         
         const div = document.createElement('div');
+        div.dataset.index = index;
         
         div.appendChild(h3);
         div.appendChild(p);
         
         return div;
-        });
+      });
+      
+      return taskElements;
+    },
+    renderCurrentProjectTaskModal(currentProjectData, index) {
+      const tasks = currentProjectData.tasks;
+      const currentTask = tasks[index];
+
+      const topContent = document.createElement('div');
+      topContent.classList.add('taskViewModal__topContent');
+
+      const taskTitle = document.createElement('h3');
+      taskTitle.textContent = currentTask.title;
+
+      const taskSettings = document.createElement('button');
+      taskSettings.type = 'button';
+      taskSettings.id = 'taskSettings';
+      taskSettings.classList.add('settingsIcon');
+      taskSettings.textContent = '⋮';
+
+      topContent.appendChild(taskTitle);
+      topContent.appendChild(taskSettings);
+
+      const taskDescription = document.createElement('p');
+      taskDescription.textContent = currentTask.description;
+
+      const subtasks = currentTask.subtasks.map(subtask => {
+        const container = document.createElement('div');
+        container.classList.add('taskViewModal__subtask');
+
+        const label = document.createElement('label');
+        label.textContent = subtask.title;
         
-        return taskElements;
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = subtask.complete;
+
+        container.appendChild(checkbox);
+        container.appendChild(label);
+
+        return container;
+      });
+
+      const subtasksContainer = document.createElement('div');
+      subtasksContainer.classList.add('taskViewModal__subtaskContainer');
+      subtasks.forEach(subtask => subtasksContainer.appendChild(subtask));
+
+
+      const dropdownStatus = document.createElement('select');
+      const toDoStatus = document.createElement('option');
+      toDoStatus.value = 'To-Do';
+      toDoStatus.textContent = 'To-Do';
+      const doingStatus = document.createElement('option');
+      doingStatus.value = 'Doing';
+      doingStatus.textContent = 'Doing';
+      const doneStatus = document.createElement('option');
+      doneStatus.value = 'Done';
+      doneStatus.textContent = 'Done';
+      dropdownStatus.appendChild(toDoStatus);
+      dropdownStatus.appendChild(doingStatus);
+      dropdownStatus.appendChild(doneStatus);
+
+      const modalElements = {topContent, taskDescription, subtasksContainer, dropdownStatus};
+
+      return modalElements;
     } 
 }

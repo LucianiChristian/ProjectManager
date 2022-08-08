@@ -15,6 +15,9 @@
     --font-color-primary : white;
     
     --padding-main: 20px;
+    --padding-less: 10px;
+
+    --gap-main: 10px;
     
     --border-radius-hi: 20px;
     --border-radius-lo: 8px;
@@ -255,6 +258,23 @@ textarea {
   &__topContent {
     display: flex;
     justify-content: space-between;
+  }
+  &__subtaskContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-main);
+  }
+  &__subtask {
+    align-items: center;
+    gap: var(--gap-main);
+
+    padding: var(--padding-less);
+    border-radius: var(--border-radius-lo);
+
+    background-color: var(--bg-color-dark);
+  }
+  &__subtask > input {
+    flex: 0;
   }
 
 }
