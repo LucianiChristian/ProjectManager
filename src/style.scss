@@ -189,6 +189,11 @@ textarea {
     
     color: white;
   }
+  &__subtasksContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
   &__subtask {
     display: flex;
   }

@@ -20,7 +20,6 @@ class Task {
     constructor(title, description, subtasks, status) {
         this.title = title;
         this.description = description;
-        console.log(subtasks);
         this.subtasks = subtasks.map(title => {
             return new Subtask(title); 
         });

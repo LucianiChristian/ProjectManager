@@ -121,6 +121,29 @@ function staticEventListeners() {
     }
   });
 
+  // Add New Task Add New Subtask
+  const addNewSubtask = document.getElementById('addNewSubtask');
+  addNewSubtask.addEventListener('click', () => {
+    const div = document.createElement('div');
+    div.classList.add('addTaskModal__subtask');
+
+    const input = document.createElement('input');
+    input.setAttribute('name', 'subtasks');
+    input.setAttribute('id', 'subtasks');
+
+    const button = document.createElement('button');
+    button.setAttribute('id', 'remove-subtask');
+    button.setAttribute('class', 'addTaskModal__subtask-remove');
+    button.setAttribute('type', 'button');
+    button.textContent = 'x';
+
+    div.appendChild(input);
+    div.appendChild(button);
+
+    const subtasksContainer = document.getElementById('subtasksContainer');
+    subtasksContainer.append(div);
+  });
+
   // Add New Task Submission
   const createTask = document.getElementById('createTask');
   createTask.addEventListener('submit', (e) => {
@@ -133,7 +156,6 @@ function staticEventListeners() {
     
     const subtaskElements = Array.from(document.querySelectorAll('input[name="subtasks"]'));
     const subtasks = subtaskElements.map(subtask => subtask.value);
-    console.log(subtasks);
 
     const status = createTask.elements['status'].value;
     
