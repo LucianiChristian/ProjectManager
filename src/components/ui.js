@@ -74,6 +74,20 @@ const currentProject = {
           modal.appendChild(modalElements.taskDescription);
           modal.appendChild(modalElements.subtasksContainer);
           modal.appendChild(modalElements.dropdownStatus);
+
+          // event listeners on subtask checkboxes
+          const subtaskCheckboxes = document.querySelectorAll('#taskViewSubtasksContainer > div > input');
+
+          subtaskCheckboxes.forEach((checkbox, subtaskIndex) => {
+            checkbox.addEventListener('click', () => {
+              // toggle subtask status
+
+              // get reference to task div for data attribute index... I already have this
+
+              // use controller function to toggle subtask status
+              controller.toggleCurrentProjectSubtaskStatus(taskIndex, subtaskIndex);
+            });
+          });
         });
       })
     },

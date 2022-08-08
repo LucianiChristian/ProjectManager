@@ -33,6 +33,13 @@ const controller = {
     removeCurrentProjectTask(taskIndex) {
       model.removeTask(this.currentProjectIndex, taskIndex);
     },
+    toggleCurrentProjectSubtaskStatus(taskIndex, subtaskIndex) {
+      const currentProject = model.getProject(this.currentProjectIndex);
+
+      const subtask = currentProject.tasks[taskIndex].subtasks[subtaskIndex];
+
+      subtask.toggleComplete();
+    },
     renderCurrentProjectTitle() {
       const titleText = model.getProject(this.currentProjectIndex).name;
   
@@ -161,6 +168,7 @@ const view = {
 
       const subtasksContainer = document.createElement('div');
       subtasksContainer.classList.add('taskViewModal__subtaskContainer');
+      subtasksContainer.id = 'taskViewSubtasksContainer';
       subtasks.forEach(subtask => subtasksContainer.appendChild(subtask));
 
 
