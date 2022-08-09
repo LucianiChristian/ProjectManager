@@ -33,6 +33,26 @@ const controller = {
     removeCurrentProjectTask(taskIndex) {
       model.removeTask(this.currentProjectIndex, taskIndex);
     },
+    getCurrentProjectTaskStatus(taskIndex) {
+      const currentProject = model.projects[this.currentProjectIndex];
+
+      return currentProject.tasks[taskIndex].status;
+    },
+    setCurrentProjectTaskStatus(status, taskIndex) {
+      const currentProject = model.getProject(this.currentProjectIndex);
+
+      if(status === 'To-Do') {
+        currentProject.tasks[taskIndex].changeStatusToDo();
+      }
+      else if(status === 'Doing') {
+        currentProject.tasks[taskIndex].changeStatusDoing();
+      }
+      else if(status === 'Done') {
+        currentProject.tasks[taskIndex].changeStatusDone();
+      }
+    
+      console.log(currentProject.tasks[taskIndex].status);
+    },
     toggleCurrentProjectSubtaskStatus(taskIndex, subtaskIndex) {
       const currentProject = model.getProject(this.currentProjectIndex);
 

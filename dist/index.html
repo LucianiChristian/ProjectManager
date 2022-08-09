@@ -4,10 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./main.js" defer></script>
+    <script src="./bundle.js" defer></script>
     <title>To-Do List</title>
 </head>
 <body>
-    <p>hi!</p>
+    <div class="sidebar">
+      <h2>All Projects : </h2>
+      <div id="sidebarProjects" class="sidebar__projects">
+      </div>
+      <p id="sidebarNewProject" class="sidebar__createNew">+ Create New Project</p>
+    </div>
+    <div class="currentProject">
+      <div class="currentProject__header">
+        <h2 id="currentProjectTitle" class="currentProject__header-title"></h2>
+        <div class="currentProject__header-rightContent">
+          <button type="button" id="header-addNewTask" class="currentProject__header-addTask">+ Add New Task</button>
+          <div class="currentProject__header-dropdown">
+            <button type="button" id="header-projectSettings" class="settingsIcon">&#8942</button>
+            <div id="header-projectSettingsDropdown" class="currentProject__header-dropdownContent">
+              <p id="header-projectSettingsDelete">Delete Project</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="currentProjectTasks" class="currentProject__tasks"></div>
+    </div>
+    <div class="modalContainer addTaskModalContainer" id="addTaskModalContainer">
+      <form id="createTask" class="addTaskModal">
+        <h3>Add New Task</h3>
+        
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" required>
+        
+        <label for="description">Description</label>
+        <textarea id="description" name="description" type="text"></textarea>
+        
+
+        <label for="subtasks">Subtasks</label>
+        <div id="subtasksContainer" class="addTaskModal__subtasksContainer">
+          <div class="addTaskModal__subtask">
+            <input id="subtasks" name="subtasks" type="text">
+            <button id="remove-subtask" class="addTaskModal__subtask-remove" type="button">x</button>
+          </div>
+          <div class="addTaskModal__subtask">
+            <input id="subtasks" name="subtasks" type="text">
+            <button id="remove-subtask" class="addTaskModal__subtask-remove" type="button">x</button>
+          </div>
+        </div>
+        <button id="addNewSubtask" class="addTaskModal__addNewSubtask" type="button">+ Add New Subtask</button>
+        
+        <label for="status">Status</label>
+        <select name="status" id="status">
+          <option value="To-Do">To-Do</option>
+          <option value="Doing">Doing</option>
+          <option value="Done">Done</option>
+        </select>
+        
+        <button class="addTask__createTask" type="submit">Create Task</button>
+      </form>
+    </div>
+    <div class="modalContainer addProjectModalContainer" id="addProjectModalContainer">
+      <form id="createProject" class="addProjectModal">
+        <label for="name">Project Name :</label>
+        <input type="text" name="projectName" id="name" required>
+
+        <button class="addproject__createProject" type="submit">Create Project</button>
+      </form>
+    </div>
+    <div class="modalContainer taskViewModalContainer" id="taskViewModalContainer">
+      <div id="taskView" class="taskViewModal"></div>
+    </div>
 </body>
 </html>
