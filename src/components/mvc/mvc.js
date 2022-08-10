@@ -157,14 +157,43 @@ const view = {
       const taskTitle = document.createElement('h3');
       taskTitle.textContent = currentTask.title;
 
+      // ------------- Dropdown ------------ //
+
+      const dropdownContainer = document.createElement('div');
+      dropdownContainer.className = 'dropdownContainer';
+
       const taskSettings = document.createElement('button');
       taskSettings.type = 'button';
-      taskSettings.id = 'taskSettings';
+      taskSettings.id = 'taskView-settings';
       taskSettings.classList.add('settingsIcon');
       taskSettings.textContent = '⋮';
 
+      const dropdown = document.createElement('div');
+      dropdown.id = 'taskView-dropdown';
+      dropdown.className = 'dropdown';
+
+      const deleteButton = document.createElement('p');
+      deleteButton.id = 'taskView-dropdownDeleteButton';
+      deleteButton.textContent = 'Delete Task';
+
+      dropdownContainer.appendChild(taskSettings);
+      dropdown.appendChild(deleteButton);
+      dropdownContainer.appendChild(dropdown);
+
+      // Event Listener - Dropdown
+      taskSettings.addEventListener('click', function(){
+        const dropdown = document.getElementById('taskView-dropdown');
+        const display = getComputedStyle(dropdown).display;
+
+        display === 'none'
+          ? dropdown.style.display = 'block'
+          : dropdown.style.display = 'none';
+      });
+
+      // ------------------------------------- //
+
       topContent.appendChild(taskTitle);
-      topContent.appendChild(taskSettings);
+      topContent.appendChild(dropdownContainer);
 
       const taskDescription = document.createElement('p');
       taskDescription.textContent = currentTask.description;

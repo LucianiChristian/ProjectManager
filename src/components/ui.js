@@ -254,7 +254,9 @@ function staticEventListeners() {
   projectSettings.addEventListener('click', () => {
     const display = projectSettingsDropdown.style.display;
 
-    display === 'none' ? projectSettingsDropdown.style.display = 'block' : projectSettingsDropdown.style.display = 'none';
+    display === 'none' 
+      ? projectSettingsDropdown.style.display = 'block' 
+      : projectSettingsDropdown.style.display = 'none';
   });
 
   // Remove Project
