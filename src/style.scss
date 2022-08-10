@@ -77,6 +77,27 @@ textarea {
   background-color: var(--accent-color-darkGrey);
 }
 
+.dropdownContainer {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  z-index: 1;
+
+  background-color: var(--bg-color-light);
+  width: 160px;
+  box-shadow: var(--box-shadow); 
+  padding: var(--padding-main);
+  border-radius: var(--border-radius-lo);
+
+  font-size: 0.8rem;
+
+  cursor: pointer;
+}
 
 // ----------------- Components ------------- //
 
@@ -128,27 +149,27 @@ textarea {
     cursor: pointer;
   }
 
-  &__header-dropdown {
-    position: relative;
-  }
+  // &__header-dropdown {
+  //   position: relative;
+  // }
 
-  &__header-dropdownContent {
-    display: none;
-    position: absolute;
-    top: 40px;
-    right: 0;
-    z-index: 1;
+  // &__header-dropdownContent {
+  //   display: none;
+  //   position: absolute;
+  //   top: 40px;
+  //   right: 0;
+  //   z-index: 1;
 
-    background-color: var(--bg-color-light);
-    width: 160px;
-    box-shadow: var(--box-shadow); 
-    padding: var(--padding-main);
-    border-radius: var(--border-radius-lo);
+  //   background-color: var(--bg-color-light);
+  //   width: 160px;
+  //   box-shadow: var(--box-shadow); 
+  //   padding: var(--padding-main);
+  //   border-radius: var(--border-radius-lo);
 
-    font-size: 0.8rem;
+  //   font-size: 0.8rem;
 
-    cursor: pointer;
-  }
+  //   cursor: pointer;
+  // }
 
   &__header-projectSettings:hover {
     background-color: var(--accent-color-grey);
