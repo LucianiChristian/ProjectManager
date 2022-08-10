@@ -50,8 +50,6 @@ const controller = {
       else if(status === 'Done') {
         currentProject.tasks[taskIndex].changeStatusDone();
       }
-    
-      console.log(currentProject.tasks[taskIndex].status);
     },
     toggleCurrentProjectSubtaskStatus(taskIndex, subtaskIndex) {
       const currentProject = model.getProject(this.currentProjectIndex);
