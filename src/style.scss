@@ -127,7 +127,6 @@ textarea {
 }
 
 .currentProject {
-  padding: var(--padding-main);
   flex: 3;
   
   background-color: var(--bg-color-dark);
@@ -136,6 +135,11 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    padding: 16px;
+    margin-bottom: 10px;
+
+    background-color: var(--bg-color-light);
   }
 
   &__header-rightContent {
@@ -147,7 +151,7 @@ textarea {
   &__header-addTask {
     border-radius: var(--border-radius-hi);
     padding: 10px 20px;
-    background-color: var(--bg-color-light);
+    background-color: var(--bg-color-purple);
     color: var(--font-color-primary);
     border: none;
 
@@ -183,8 +187,22 @@ textarea {
     font-size: var(--font-size-small);
     color: var(--font-color-secondary);
     letter-spacing: var(--letter-spacing);
+
+    margin-bottom: 10px;
   }
-  
+  &__tasks > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-less);
+  }
+  &__tasks > div > div > div {
+    background-color: var(--bg-color-light);
+    border-radius: var(--border-radius-lo);
+    padding: var(--padding-less);
+  }
+  &__tasks > div > div > div > p {
+    font-size: var(--font-size-small);
+  }
 }
 
 .modalContainer {
