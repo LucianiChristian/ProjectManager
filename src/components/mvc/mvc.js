@@ -173,6 +173,7 @@ const view = {
       const deleteButton = document.createElement('p');
       deleteButton.id = 'taskView-dropdownDeleteButton';
       deleteButton.textContent = 'Delete Task';
+      deleteButton.dataset.index = index;
 
       dropdownContainer.appendChild(taskSettings);
       dropdown.appendChild(deleteButton);

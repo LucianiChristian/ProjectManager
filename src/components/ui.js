@@ -97,7 +97,12 @@ const currentProject = {
           const dropdown = document.querySelector('#taskView > select');
           dropdown.addEventListener('change', () => {
             controller.setCurrentProjectTaskStatus(dropdown.value, taskIndex);
-          })
+          });
+
+          const deleteButton = document.getElementById('taskView-dropdownDeleteButton');
+          deleteButton.addEventListener('click', function(){
+            currentProject.deleteTask(this.dataset.index);
+          });
         });
       })
     },
@@ -129,6 +134,10 @@ const currentProject = {
   },
   createNewTask(title, description, subtasks, status) {
     controller.addCurrentProjectTask(title, description, subtasks, status);
+    this.refresh();
+  },
+  deleteTask(taskIndex) {
+    controller.removeCurrentProjectTask(taskIndex);
     this.refresh();
   }
 }
