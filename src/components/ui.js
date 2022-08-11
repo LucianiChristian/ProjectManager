@@ -92,8 +92,6 @@ const currentProject = {
               option.selected = true;
             }
           });
-          
-          
 
           modal.appendChild(modalElements.topContent);
           modal.appendChild(modalElements.taskDescription);
@@ -112,6 +110,7 @@ const currentProject = {
           const dropdown = document.querySelector('#taskView > select');
           dropdown.addEventListener('change', () => {
             controller.setCurrentProjectTaskStatus(dropdown.value, taskIndex);
+            currentProject.refresh();
           });
 
           const deleteButton = document.getElementById('taskView-dropdownDeleteButton');
