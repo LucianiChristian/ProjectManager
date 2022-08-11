@@ -40,9 +40,11 @@ const sideBar = {
 const currentProject = {
   tasks: {
     clear() {
-      const currentProjectTasks = document.getElementById('currentProjectTasks');
+      const taskCategories = document.querySelectorAll('#currentProject-tasks > div > div');
       
-      currentProjectTasks.innerHTML = '';
+      taskCategories.forEach((element) => {
+        element.innerHTML = '';
+      });
     },
     add() {
       if(controller.currentProjectIndex < 0) {
@@ -50,14 +52,26 @@ const currentProject = {
       }
       const taskElements = controller.renderCurrentProjectTaskCards();
       
-      const projectTasks = document.getElementById('currentProjectTasks');
+      const toDoCategory = document.getElementById('currentProject-tasks-toDoTaskContainer');
+      const doingCategory = document.getElementById('currentProject-tasks-doingTaskContainer');
+      const doneCategory = document.getElementById('currentProject-tasks-doneTaskContainer');
       
       taskElements.forEach((element) => {
-        projectTasks.appendChild(element);
+        const status = element.dataset.status;
+        
+        if(status === 'To-Do') {
+          toDoCategory.appendChild(element);
+        }
+        else if(status === 'Doing') {
+          doingCategory.appendChild(element);
+        }
+        if(status === 'Done') {
+          doneCategory.appendChild(element);
+        }
       });
     },
     eventListeners() {
-      const tasks = document.querySelectorAll('#currentProjectTasks > div');
+      const tasks = document.querySelectorAll('#currentProject-tasks > div > div > div');
       
       const modalContainer = document.getElementById('taskViewModalContainer');
       const modal = document.getElementById('taskView');
@@ -65,6 +79,7 @@ const currentProject = {
       tasks.forEach(task => {
         task.addEventListener('click', () => {
           modalContainer.classList.add('modalContainer--show');
+
 
           const taskIndex = task.dataset.index;
           
@@ -336,17 +351,17 @@ const UI = {sideBar, currentProject, page, staticEventListeners};
 
 controller.addProject('My Project 1');
 
-controller.addCurrentProjectTask('fight fires','carefully',['clean room', 'do stuff'],'to-do');
-controller.addCurrentProjectTask('hi','hi',['pet da cat'],'to-do');
+controller.addCurrentProjectTask('fight fires','carefully',['clean room', 'do stuff'],'To-Do');
+controller.addCurrentProjectTask('hi','hi',['pet da cat'],'To-Do');
 
 
 controller.addProject('My Project 2');
 
-controller.addCurrentProjectTask('pet cats','carefully',['clean room', 'do stuff'],'to-do');
-controller.addCurrentProjectTask('hi','hi',['pet da cat'],'to-do');
+controller.addCurrentProjectTask('pet cats','carefully',['clean room', 'do stuff'],'To-Do');
+controller.addCurrentProjectTask('hi','hi',['pet da cat'],'To-Do');
 
 
 controller.addProject('My Project 3');
 
-controller.addCurrentProjectTask('hi','hi',['clean room', 'do stuff'],'to-do');
-controller.addCurrentProjectTask('hi','hi',['pet da cat'],'to-do');
+controller.addCurrentProjectTask('hi','hi',['clean room', 'do stuff'],'To-Do');
+controller.addCurrentProjectTask('hi','hi',['pet da cat'],'To-Do');

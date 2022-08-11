@@ -136,6 +136,7 @@ const view = {
         
         const div = document.createElement('div');
         div.dataset.index = index;
+        div.dataset.status = task.status;
         
         div.appendChild(h3);
         div.appendChild(p);
@@ -148,6 +149,7 @@ const view = {
     renderCurrentProjectTaskModal(currentProjectData, index) {
       const tasks = currentProjectData.tasks;
       const currentTask = tasks[index];
+      // console.log(index);
 
       const topContent = document.createElement('div');
       topContent.classList.add('taskViewModal__topContent');
