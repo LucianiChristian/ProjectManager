@@ -12,7 +12,12 @@
     --accent-color-grey: rgba(200, 200, 200, 0.6);
     --accent-color-darkGrey: rgba(200, 200, 200, 0.9);
 
-    --font-color-primary : white;
+    --font-color-primary: white;
+    --font-color-secondary: #5A5B69;
+
+    --font-size-small: 0.75rem;
+
+    --letter-spacing: 2px;
     
     --padding-main: 20px;
     --padding-less: 10px;
@@ -153,19 +158,33 @@ textarea {
     background-color: var(--accent-color-grey);
   }
 
-  &__tasks > * {
-    background-color: var(--bg-color-light);
+  // &__tasks > * {
+  //   background-color: var(--bg-color-light);
     
-    border-radius: var(--border-radius-lo);
+  //   border-radius: var(--border-radius-lo);
     
-    width: 50%;
+  //   width: 50%;
     
-    margin: 20px auto;
+  //   margin: 20px auto;
     
-    text-align: center;
+  //   text-align: center;
     
-    padding: 20px;
+  //   padding: 20px;
+  // }
+  &__tasks {
+    display: flex;
+    justify-content: center;
+    gap: var(--gap-main);
   }
+  &__tasks > div {
+    width: 200px;
+  }
+  &__tasks > div > h3 {
+    font-size: var(--font-size-small);
+    color: var(--font-color-secondary);
+    letter-spacing: var(--letter-spacing);
+  }
+  
 }
 
 .modalContainer {
