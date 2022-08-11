@@ -102,6 +102,15 @@ const currentProject = {
           const deleteButton = document.getElementById('taskView-dropdownDeleteButton');
           deleteButton.addEventListener('click', function(){
             currentProject.deleteTask(this.dataset.index);
+
+            const dropdown = document.getElementById('taskView-dropdown');
+            dropdown.style.display = 'none';
+
+            const modalContainer = document.getElementById('taskViewModalContainer');
+            modalContainer.classList.toggle('modalContainer--show');
+
+            const modal = document.getElementById('taskView');
+            modal.innerHTML = '';
           });
         });
       })
