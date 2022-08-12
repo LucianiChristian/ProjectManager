@@ -42,11 +42,7 @@ const controller = {
       model.setTaskStatus(this.currentProjectIndex, taskIndex, status);
     },
     toggleCurrentProjectSubtaskStatus(taskIndex, subtaskIndex) {
-      const currentProject = model.getProject(this.currentProjectIndex);
-
-      const subtask = currentProject.tasks[taskIndex].subtasks[subtaskIndex];
-
-      subtask.toggleComplete();
+      model.toggleSubtaskStatus(this.currentProjectIndex, taskIndex, subtaskIndex);
     },
     renderCurrentProjectTitle() {
       const titleText = model.getProject(this.currentProjectIndex).name;
@@ -112,11 +108,20 @@ const model = {
 
       this.writeToLocalStorage();
     },
+    toggleSubtaskStatus(currentProjectIndex, taskIndex, subtaskIndex) {
+      const subtask = this.projects[currentProjectIndex].tasks[taskIndex].subtasks[subtaskIndex];
+
+      subtask.toggleComplete();
+
+      this.writeToLocalStorage();
+    },
     writeToLocalStorage() {
       const projectsJSON = JSON.stringify(this.projects);
 
       localStorage.setItem('projects', projectsJSON);
-    }
+
+      console.log(JSON.parse(localStorage.projects));
+    },
 }
 
 const view = {
