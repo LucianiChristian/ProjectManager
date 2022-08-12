@@ -39,17 +39,7 @@ const controller = {
       return currentProject.tasks[taskIndex].status;
     },
     setCurrentProjectTaskStatus(status, taskIndex) {
-      const currentProject = model.getProject(this.currentProjectIndex);
-
-      if(status === 'To-Do') {
-        currentProject.tasks[taskIndex].changeStatusToDo();
-      }
-      else if(status === 'Doing') {
-        currentProject.tasks[taskIndex].changeStatusDoing();
-      }
-      else if(status === 'Done') {
-        currentProject.tasks[taskIndex].changeStatusDone();
-      }
+      model.setTaskStatus(this.currentProjectIndex, taskIndex, status);
     },
     toggleCurrentProjectSubtaskStatus(taskIndex, subtaskIndex) {
       const currentProject = model.getProject(this.currentProjectIndex);
@@ -90,6 +80,7 @@ const model = {
     },
     removeProject: function(index) {
         this.projects.splice(index, 1);
+        this.writeToLocalStorage();
     },
     getProjects: function() {
         const projectsCopy = [...this.projects];
@@ -100,9 +91,26 @@ const model = {
     },
     addTask(currentProjectIndex, name, description, subtasks, status) {
         this.projects[currentProjectIndex].addTask(name, description, subtasks, status);
+        this.writeToLocalStorage();
     },
     removeTask(currentProjectIndex, taskIndex) {
-        this.projects[currentProjectIndex].removeTask(taskIndex);
+      this.projects[currentProjectIndex].removeTask(taskIndex);
+      this.writeToLocalStorage();
+    },
+    setTaskStatus(currentProjectIndex, taskIndex, status) {
+      const task = this.projects[currentProjectIndex].tasks[taskIndex];
+      
+      if(status === 'To-Do') {
+        task.changeStatusToDo();
+      }
+      else if(status === 'Doing') {
+        task.changeStatusDoing();
+      }
+      else if(status === 'Done') {
+        task.changeStatusDone();
+      }
+
+      this.writeToLocalStorage();
     },
     writeToLocalStorage() {
       const projectsJSON = JSON.stringify(this.projects);
