@@ -308,6 +308,7 @@ function staticEventListeners() {
   });
 }
 
+// HERE
 const UI = {sideBar, currentProject, page, staticEventListeners};
 
 

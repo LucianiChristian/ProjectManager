@@ -76,13 +76,17 @@ const controller = {
       const modal = view.renderCurrentProjectTaskModal(projectData, taskIndex);
 
       return modal;
-    }
+    },
+    getProjectsJSON() {
+      return JSON.stringify(model.projects);
+    },
 }
   
 const model = {
     projects: [],
     addProject: function(name) {
         this.projects.push(new Project(name));
+        this.writeToLocalStorage();
     },
     removeProject: function(index) {
         this.projects.splice(index, 1);
@@ -99,6 +103,11 @@ const model = {
     },
     removeTask(currentProjectIndex, taskIndex) {
         this.projects[currentProjectIndex].removeTask(taskIndex);
+    },
+    writeToLocalStorage() {
+      const projectsJSON = JSON.stringify(this.projects);
+
+      localStorage.setItem('projects', projectsJSON);
     }
 }
 
