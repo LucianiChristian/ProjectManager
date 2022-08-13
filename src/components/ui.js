@@ -310,53 +310,8 @@ function staticEventListeners() {
 
 function loadFromLocalStorage() {
   controller.loadFromLocalStorage();
+  page.refreshDashboard();
 }
 
 // HERE
-const UI = {sideBar, currentProject, page, staticEventListeners, controller};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ~~~~~~~~~~~~~~~T E S T I N G   B E L O W~~~~~~~~~~~~~~ //
-// will eventually be transferred to index.js once UI has the corresponding addProject and addProjectTask functions
-function defaultProject() {
-  controller.addProject('My Project 1');
-
-  controller.addCurrentProjectTask('fight fires','carefully',['clean room', 'do stuff'],'To-Do');
-  controller.addCurrentProjectTask('hi','hi',['pet da cat'],'To-Do');
-}
+const UI = {sideBar, currentProject, page, staticEventListeners, loadFromLocalStorage};

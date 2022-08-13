@@ -121,7 +121,7 @@ const model = {
       localStorage.setItem('projects', projectsJSON);
     },
     loadFromLocalStorage() {
-      if(localStorage.projects === undefined) {
+      if(localStorage.projects === undefined || localStorage.projects === '[]') {
         controller.addProject('Default Project');
 
         controller.addCurrentProjectTask('fight fires','carefully',['clean room', 'do stuff'],'To-Do');
@@ -144,16 +144,17 @@ const model = {
         tasks.forEach(task => {
           const {title, description, subtasks, status} = task;
 
-          project.addTask(title, description, subtasks, status);
+          const subtaskTitles = subtasks.map(subtask => subtask.title);
+
+          project.addTask(title, description, subtaskTitles, status);
+
+          // need a way to change status on subtasks from here
         });
 
         return project;
       });
 
       this.projects = projectsTranslated;
-
-      console.log('localStorage loaded and inserted');
-      console.log(this.projects);
     },
 }
 

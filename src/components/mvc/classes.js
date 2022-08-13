@@ -60,9 +60,15 @@ class Task {
 }
 
 class Subtask {
-  constructor(title) {
+  constructor(title, complete) {
     this.title = title;
-    this.complete = false;
+
+    if(complete !== undefined) {
+     this.complete = complete; 
+    }
+    else {
+      this.complete = false;
+    }
   }
   
   toggleComplete() {
