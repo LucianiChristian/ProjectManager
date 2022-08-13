@@ -308,8 +308,14 @@ function staticEventListeners() {
   });
 }
 
+function loadFromLocalStorage() {
+  controller.loadFromLocalStorage();
+}
+
 // HERE
-const UI = {sideBar, currentProject, page, staticEventListeners};
+const UI = {sideBar, currentProject, page, staticEventListeners, controller};
+
+
 
 
 
@@ -348,20 +354,9 @@ const UI = {sideBar, currentProject, page, staticEventListeners};
 
 // ~~~~~~~~~~~~~~~T E S T I N G   B E L O W~~~~~~~~~~~~~~ //
 // will eventually be transferred to index.js once UI has the corresponding addProject and addProjectTask functions
+function defaultProject() {
+  controller.addProject('My Project 1');
 
-controller.addProject('My Project 1');
-
-controller.addCurrentProjectTask('fight fires','carefully',['clean room', 'do stuff'],'To-Do');
-controller.addCurrentProjectTask('hi','hi',['pet da cat'],'To-Do');
-
-
-controller.addProject('My Project 2');
-
-controller.addCurrentProjectTask('pet cats','carefully',['clean room', 'do stuff'],'To-Do');
-controller.addCurrentProjectTask('hi','hi',['pet da cat'],'To-Do');
-
-
-controller.addProject('My Project 3');
-
-controller.addCurrentProjectTask('hi','hi',['clean room', 'do stuff'],'To-Do');
-controller.addCurrentProjectTask('hi','hi',['pet da cat'],'To-Do');
+  controller.addCurrentProjectTask('fight fires','carefully',['clean room', 'do stuff'],'To-Do');
+  controller.addCurrentProjectTask('hi','hi',['pet da cat'],'To-Do');
+}

@@ -63,8 +63,8 @@ const controller = {
 
       return modal;
     },
-    getProjectsJSON() {
-      return JSON.stringify(model.projects);
+    loadFromLocalStorage() {
+      model.loadFromLocalStorage();
     },
 }
   
@@ -119,8 +119,41 @@ const model = {
       const projectsJSON = JSON.stringify(this.projects);
 
       localStorage.setItem('projects', projectsJSON);
+    },
+    loadFromLocalStorage() {
+      if(localStorage.projects === undefined) {
+        controller.addProject('Default Project');
 
-      console.log(JSON.parse(localStorage.projects));
+        controller.addCurrentProjectTask('fight fires','carefully',['clean room', 'do stuff'],'To-Do');
+        controller.addCurrentProjectTask('water is wet','hi',['pet da cat'],'To-Do');
+        return;
+      }
+
+      const data = JSON.parse(localStorage.projects);
+
+      // instantiate projects with given data using forEach
+      const projectsTranslated = data.map(projectData => {
+
+        const projectName = projectData.name;
+        const tasks = projectData.tasks;
+
+        // use project name to create project
+        const project = new Project(projectName);
+
+        // use tasks to instantiate tasks
+        tasks.forEach(task => {
+          const {title, description, subtasks, status} = task;
+
+          project.addTask(title, description, subtasks, status);
+        });
+
+        return project;
+      });
+
+      this.projects = projectsTranslated;
+
+      console.log('localStorage loaded and inserted');
+      console.log(this.projects);
     },
 }
 
