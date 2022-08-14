@@ -310,6 +310,7 @@ function staticEventListeners() {
 
 function loadFromLocalStorage() {
   controller.loadFromLocalStorage();
+  page.switchCurrentProject(0);
   page.refreshDashboard();
 }
 
