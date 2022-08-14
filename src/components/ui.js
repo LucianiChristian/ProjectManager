@@ -202,6 +202,13 @@ function staticEventListeners() {
   // Add New Task Button
   const addNewTask = document.getElementById('header-addNewTask');
   addNewTask.addEventListener('click', () => {
+    const container = document.getElementById('subtasksContainer');
+    let subtaskControls = container.getElementsByTagName('div');
+    
+    while(subtaskControls.length > 2) {
+      container.removeChild(subtaskControls[subtaskControls.length - 1]);
+    }
+
     addTaskModalContainer.classList.add('modalContainer--show');
   });
 
