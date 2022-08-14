@@ -144,6 +144,8 @@ const model = {
         tasks.forEach(task => {
           const {title, description, subtasks, status} = task;
 
+          console.log(subtasks);
+
           const subtaskTitles = subtasks.map(subtask => subtask.title);
 
           project.addTask(title, description, subtaskTitles, status);
