@@ -128,6 +128,14 @@ const currentProject = {
           });
         });
       })
+
+      // Task Settings Dropdown Closer
+      document.body.addEventListener('click', (e) => {
+        if(!e.target.matches('#taskView-settings') && !e.target.matches('#taskView-dropdown')) {
+          document.getElementById('taskView-dropdown').style.display = 'none';
+          console.log('hi');
+        }
+      })
     },
     refresh() {
       this.clear();
@@ -286,19 +294,17 @@ function staticEventListeners() {
   projectSettings.addEventListener('click', () => {
     const display = getComputedStyle(projectSettingsDropdown).display;
 
-    console.log(display);
-
     display === 'none' 
       ? projectSettingsDropdown.style.display = 'block' 
       : projectSettingsDropdown.style.display = 'none';
   });
 
-  // // Project Settings Dropdown Closer
-  // document.body.addEventListener('click', (e) => {
-  //   if(!e.target.classList.contains('dropdown')) {
-  //     console.log(e.target);
-  //   }
-  // })
+  // Project Settings Dropdown Closer
+  document.body.addEventListener('click', (e) => {
+    if(!e.target.matches('#header-projectSettings') && !e.target.matches('#header-projectSettingsDropdown')) {
+      projectSettingsDropdown.style.display = 'none';
+    }
+  })
 
   // Remove Project
   const removeProject = document.getElementById('header-projectSettingsDelete');
