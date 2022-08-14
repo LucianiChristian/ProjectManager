@@ -284,12 +284,21 @@ function staticEventListeners() {
   const projectSettings = document.getElementById('header-projectSettings');
   const projectSettingsDropdown = document.getElementById('header-projectSettingsDropdown');
   projectSettings.addEventListener('click', () => {
-    const display = projectSettingsDropdown.style.display;
+    const display = getComputedStyle(projectSettingsDropdown).display;
+
+    console.log(display);
 
     display === 'none' 
       ? projectSettingsDropdown.style.display = 'block' 
       : projectSettingsDropdown.style.display = 'none';
   });
+
+  // // Project Settings Dropdown Closer
+  // document.body.addEventListener('click', (e) => {
+  //   if(!e.target.classList.contains('dropdown')) {
+  //     console.log(e.target);
+  //   }
+  // })
 
   // Remove Project
   const removeProject = document.getElementById('header-projectSettingsDelete');
