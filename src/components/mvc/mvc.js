@@ -144,13 +144,17 @@ const model = {
         tasks.forEach(task => {
           const {title, description, subtasks, status} = task;
 
-          console.log(subtasks);
-
           const subtaskTitles = subtasks.map(subtask => subtask.title);
 
           project.addTask(title, description, subtaskTitles, status);
 
-          // need a way to change status on subtasks from here
+          const currentTask = project.tasks[project.tasks.length - 1];
+
+          const currentSubtasks = currentTask.subtasks;
+
+          currentSubtasks.forEach((subtask, index) => {
+            subtask.complete = subtasks[index].complete;
+          });
         });
 
         return project;

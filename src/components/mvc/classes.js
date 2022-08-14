@@ -26,8 +26,8 @@ class Task {
         this.status = status;
     }
   
-    addSubtask(title) {
-      this.subtasks.push(new Subtask(title));
+    addSubtask(title, complete) {
+      this.subtasks.push(new Subtask(title, complete));
     }
   
     removeSubtask(index) {
