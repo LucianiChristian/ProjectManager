@@ -54,6 +54,7 @@
 
 body {
   height: 100vh;
+  min-height: 400px;
   
   display: flex;
   
@@ -131,6 +132,8 @@ textarea {
   
   background-color: var(--bg-color-dark);
 
+  overflow: auto;
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -161,20 +164,6 @@ textarea {
   &__header-projectSettings:hover {
     background-color: var(--accent-color-grey);
   }
-
-  // &__tasks > * {
-  //   background-color: var(--bg-color-light);
-    
-  //   border-radius: var(--border-radius-lo);
-    
-  //   width: 50%;
-    
-  //   margin: 20px auto;
-    
-  //   text-align: center;
-    
-  //   padding: 20px;
-  // }
   &__tasks {
     display: flex;
     justify-content: center;
@@ -288,6 +277,10 @@ textarea {
       color: white;
       font-weight: bold;
   }
+}
+
+.addTaskModal, .addProjectModal, .taskViewModal {
+  max-height: 100%;
 }
 
 .taskViewModal {
