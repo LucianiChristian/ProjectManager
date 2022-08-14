@@ -230,14 +230,7 @@ function staticEventListeners() {
     input.setAttribute('name', 'subtasks');
     input.setAttribute('id', 'subtasks');
 
-    const button = document.createElement('button');
-    button.setAttribute('id', 'remove-subtask');
-    button.setAttribute('class', 'addTaskModal__subtask-remove');
-    button.setAttribute('type', 'button');
-    button.textContent = 'x';
-
     div.appendChild(input);
-    div.appendChild(button);
 
     const subtasksContainer = document.getElementById('subtasksContainer');
     subtasksContainer.append(div);
