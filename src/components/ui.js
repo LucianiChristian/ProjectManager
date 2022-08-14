@@ -131,9 +131,15 @@ const currentProject = {
 
       // Task Settings Dropdown Closer
       document.body.addEventListener('click', (e) => {
+        const settings = document.getElementById('taskView-settings');
+        const dropdown = document.getElementById('taskView-dropdown');
+
+        if(!settings || !dropdown) {
+          return;
+        }
+
         if(!e.target.matches('#taskView-settings') && !e.target.matches('#taskView-dropdown')) {
           document.getElementById('taskView-dropdown').style.display = 'none';
-          console.log('hi');
         }
       })
     },
