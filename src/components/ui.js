@@ -247,7 +247,10 @@ function staticEventListeners() {
     const description = createTask.elements['description'].value;
     
     const subtaskElements = Array.from(document.querySelectorAll('input[name="subtasks"]'));
-    const subtasks = subtaskElements.map(subtask => subtask.value);
+
+    const nonEmptySubtaskElements = subtaskElements.filter(subtask => subtask.value);
+
+    const subtasks = nonEmptySubtaskElements.map(subtask => subtask.value);
 
     const status = createTask.elements['status'].value;
     
