@@ -33,15 +33,15 @@
       </div>
       <div id="currentProject-tasks" class="currentProject__tasks">
         <div id="currentProject-tasks-toDo">
-          <h3>TODO</h3>
+          <h3><span class="circleIcon" style="background-color: rgb(67 197 235)"></span>TODO</h3>
           <div id="currentProject-tasks-toDoTaskContainer"></div>
         </div>
         <div id="currentProject-tasks-doing">
-          <h3>DOING</h3>
+          <h3><span class="circleIcon" style="background-color: rgb(131 111 245)"></span>DOING</h3>
           <div id="currentProject-tasks-doingTaskContainer"></div>
         </div>
         <div id="currentProject-tasks-done">
-          <h3>DONE</h3>
+          <h3><span class="circleIcon" style="background-color: rgb(96 229 174)"></span>DONE</h3>
           <div id="currentProject-tasks-doneTaskContainer"></div>
         </div>
       </div>
@@ -80,7 +80,7 @@
     </div>
     <div class="modalContainer addProjectModalContainer" id="addProjectModalContainer">
       <form id="createProject" class="addProjectModal">
-        <label for="name">Project Name :</label>
+        <label for="name"><h3>Project Name :</h3></label>
         <input type="text" name="projectName" id="name" placeholder ="e.g. Create To-Do List App" required>
 
         <button class="rounded-button" type="submit">Create Project</button>
