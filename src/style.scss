@@ -105,6 +105,28 @@ textarea {
   cursor: pointer;
 }
 
+.rounded-button {
+  border-radius: var(--border-radius-hi);
+  padding: 10px 20px;
+  background-color: var(--bg-color-purple);
+  color: var(--font-color-primary);
+  border: none;
+
+  cursor: pointer;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+    &:active {
+      transform: scale(0.97);
+    }
+}
+
+.optionThemed {
+  background-color: var(--bg-color-light);
+  padding: 1em;
+}
+
 // ----------------- Components ------------- //
 
 .sidebar {
@@ -112,9 +134,15 @@ textarea {
   flex: 1;
   background-color: var(--bg-color-light);
 
+  h2 {
+    margin-bottom: 20px;
+  }
+
   p {
     cursor: pointer;
     border-radius: 3px;
+
+    padding: 10px;
   }
 
   &__createNew {
@@ -168,9 +196,11 @@ textarea {
     display: flex;
     justify-content: center;
     gap: var(--gap-main);
+
+    padding: 0 20px;
   }
   &__tasks > div {
-    width: 200px;
+    width: 300px;
   }
   &__tasks > div > h3 {
     font-size: var(--font-size-small);
@@ -305,7 +335,6 @@ textarea {
   &__subtask > input {
     flex: 0;
   }
-
 }
  
 

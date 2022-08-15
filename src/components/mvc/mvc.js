@@ -122,10 +122,17 @@ const model = {
     },
     loadFromLocalStorage() {
       if(localStorage.projects === undefined || localStorage.projects === '[]') {
-        controller.addProject('Default Project');
+        controller.addProject('Platform Launch');
 
-        controller.addCurrentProjectTask('fight fires','carefully',['clean room', 'do stuff'],'To-Do');
-        controller.addCurrentProjectTask('water is wet','hi',['pet da cat'],'To-Do');
+        controller.addCurrentProjectTask('Build UI for onboarding flow','a description will go here, of some length...',['subtask 1', 'do stuff'],'To-Do');
+        controller.addCurrentProjectTask('Build UI for search','a description will go here, of some length...',['subtask 1'],'Doing');
+        controller.addCurrentProjectTask('Design settings and search pages','a description will go here, of some length...',['subtask 1'],'Doing');
+        controller.addCurrentProjectTask('UI for menu','a description will go here, of some length...',['subtask 1', 'do stuff'],'To-Do');
+        controller.addCurrentProjectTask('UI for settings','a description will go here, of some length...',['subtask 1'],'Doing');
+        controller.addCurrentProjectTask('Design settings and search pages','a description will go here, of some length...',['subtask 1'],'Doing');
+        controller.addCurrentProjectTask('Build UI for onboarding flow','a description will go here, of some length...',['subtask 1', 'do stuff'],'To-Do');
+        controller.addCurrentProjectTask('Build UI for search','a description will go here, of some length...',['subtask 1'],'Doing');
+        controller.addCurrentProjectTask('Design settings and search pages','a description will go here, of some length...',['subtask 1'],'Done');
         return;
       }
 

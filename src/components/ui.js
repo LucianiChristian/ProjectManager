@@ -86,6 +86,11 @@ const currentProject = {
           const modalElements = controller.renderCurrentProjectTaskModal(taskIndex);
 
           const options = Array.from(modalElements.dropdownStatus.getElementsByTagName('option'));
+
+          options.forEach(option => {
+            option.style.backgroundColor = 'var(--bg-color-light)';
+          });
+
           const taskStatus = controller.getCurrentProjectTaskStatus(taskIndex);
           options.forEach(option => {
             if(option.value === taskStatus) {
