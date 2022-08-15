@@ -127,6 +127,18 @@ textarea {
   padding: 1em;
 }
 
+.circleIcon {
+  display: inline-block;
+  min-height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  outline: none;
+
+
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 // ----------------- Components ------------- //
 
 .sidebar {
@@ -143,15 +155,19 @@ textarea {
     border-radius: 3px;
 
     padding: 10px;
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: var(--bg-color-purple);
+    }
   }
 
   &__createNew {
     color: var(--bg-color-purple);
-  }
 
-  p:hover {
-    transform: scale(1.1);
-    background-color: grey;
+    &:hover {
+      color: white;
+    }
   }
 }
 
@@ -218,9 +234,16 @@ textarea {
     background-color: var(--bg-color-light);
     border-radius: var(--border-radius-lo);
     padding: var(--padding-less);
+
+    &:hover {
+      filter: brightness(1.5);
+      transform: scale(1.02) translateY(-2px);
+      transition: transform 0.15s ease-in-out;
+    }
   }
   &__tasks > div > div > div > p {
     font-size: var(--font-size-small);
+    filter: brightness(0.7);
   }
 }
 
@@ -318,6 +341,10 @@ textarea {
     display: flex;
     justify-content: space-between;
   }
+  > p {
+    filter: brightness(0.7);
+    font-size: 0.85rem;
+  }
   &__subtaskContainer {
     display: flex;
     flex-direction: column;
@@ -331,9 +358,24 @@ textarea {
     border-radius: var(--border-radius-lo);
 
     background-color: var(--bg-color-dark);
+
+    &:hover {
+      filter: brightness(1.5);
+    }
   }
   &__subtask > input {
     flex: 0;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+}
+
+.addProjectModal {
+  input {
+    margin-bottom: 15px;
   }
 }
  
