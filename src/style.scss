@@ -50,6 +50,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    user-select: none;
 }
 
 body {
@@ -229,6 +231,8 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: var(--padding-less);
+
+    cursor: pointer;
   }
   &__tasks > div > div > div {
     background-color: var(--bg-color-light);
@@ -366,10 +370,15 @@ textarea {
   &__subtask > input {
     flex: 0;
 
+    cursor: pointer;
+
     &:hover {
       transform: scale(1.2);
       transition: transform 0.15s ease-in-out;
     }
+  }
+  select {
+    cursor: pointer;
   }
 }
 
