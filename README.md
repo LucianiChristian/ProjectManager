@@ -1,5 +1,5 @@
-# To-Do List
-<p>A To-Do List application making use of local storage to store persistent user data.</p>
+# Project Manager
+<p>A Project Management application making use of local storage to store persistent user data.</p>
 <p>Created By : <a href="https://github.com/LucianiChristian">Christian Luciani</a></p> 
 <a href="https://lucianichristian.github.io/to-do-list/">Live Preview</a>
 
